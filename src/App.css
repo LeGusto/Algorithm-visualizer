@@ -46,3 +46,13 @@ button {
 .pillar {
   color:azure;
 }
+
+.elementToFadeOut {
+  opacity: 1;
+  animation: fade 1s linear;
+}
+
+@keyframes fade {
+  from { opacity: 1 }
+  to { opacity: 0}
+}
