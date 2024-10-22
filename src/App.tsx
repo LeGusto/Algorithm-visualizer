@@ -5,21 +5,25 @@ import "./BasicMenus/Startup.css";
 import "./Templates/AnimatedList.css";
 import { useRef, useState } from "react";
 
-// Undo stack for menus
-var menuStack: string[] = [];
-
 function App() {
-  const [CurrentMenu, setCurrentMenu] = useState("startup"); // State to control visibility of Startup
+  // State to control visibility of Startup
+  const [CurrentMenu, setCurrentMenu] = useState("startup");
+  // Undo stack state for menus
+  const [menuStack, setMenuStack] = useState<string[]>([]);
 
   const changeMenu = (name: string) => {
     name = name.toLowerCase();
 
     // Return to previous menu
     if (name == "back") {
+      if (menuStack.length == 0) {
+        throw new Error("Cannot undo: stack is empty");
+      }
+
       setCurrentMenu(menuStack[menuStack.length - 1]);
-      menuStack.pop();
+      setMenuStack((prevStack) => prevStack.slice(0, -1));
     } else {
-      menuStack.push(CurrentMenu);
+      setMenuStack((prevStack) => [...prevStack, CurrentMenu]);
       setCurrentMenu(name);
     }
   };
