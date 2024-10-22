@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
-  onFadeOut: () => void;
+  changeMenu: (name: string) => void;
 }
 
 const Startup = (props: Props) => {
@@ -41,7 +41,7 @@ const Startup = (props: Props) => {
         box.current!.style.display = "none";
 
         // Initialize main menu
-        props.onFadeOut();
+        props.changeMenu("main menu");
       };
       // Add the event listener
       box.current.addEventListener("animationend", handleAnimationEnd);
@@ -56,11 +56,6 @@ const Startup = (props: Props) => {
   return (
     <div className="main_component" ref={box}>
       <p>Welcome!</p>
-      <p>
-        This project was created to help me better understand how algorithms
-        work in detail. Moreover, the website contains multiple algorithms for
-        convenience.
-      </p>
 
       <button
         className="start_button"
