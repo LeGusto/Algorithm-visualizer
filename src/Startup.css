@@ -1,23 +1,22 @@
-
 .main_component {
-  display:flexbox;
-  
+  display: flexbox;
+
   text-align: center;
   flex-direction: column;
   justify-content: space-between;
 
-  background-color: #337CCF;
+  background-color: #337ccf;
   position: absolute;
-  top:50%;
-  left:50%;
-  height:300px;
+  top: 50%;
+  left: 50%;
+  height: 300px;
   margin-top: -150px;
   margin-left: -250px;
-  width:500px;
+  width: 500px;
 
   border: solid;
   border-radius: 20px;
-  border-color: #FFC436;
+  border-color: #ffc436;
   transition-duration: 0.4s;
 }
 
@@ -25,26 +24,25 @@
   border-color: #a78024;
 }
 
-button {
+.start_button {
   text-align: center;
   background-color: #ffc436;
-  border:none;
+  border: none;
   -webkit-text-stroke-width: 0px;
-  
+
   font-size: 2rem;
-  color: #337CCF;
+  color: #337ccf;
   width: 100%;
 
   transition-duration: 0.4s;
 }
-
 
 .hovered_button {
   background-color: #a78024;
 }
 
 .pillar {
-  color:azure;
+  color: azure;
 }
 
 .elementToFadeOut {
@@ -53,6 +51,10 @@ button {
 }
 
 @keyframes fade {
-  from { opacity: 1 }
-  to { opacity: 0}
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
