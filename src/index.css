@@ -1,14 +1,13 @@
 :root {
   color: #ffffff;
-  -webkit-text-stroke-width: 2px;
+  /*-webkit-text-stroke-width: 2px;*/
   -webkit-text-stroke-color: black;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 body {
   background-image: url(../public/Shiny\ Overlay.svg);
 }
-
 
 h1 {
   text-align: center;
@@ -19,4 +18,3 @@ p {
   -webkit-text-stroke-width: 0;
   font-size: 1.5rem;
 }
-

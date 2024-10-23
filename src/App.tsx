@@ -1,18 +1,24 @@
 import Startup from "./BasicMenus/Startup";
 import MainMenu from "./BasicMenus/MainMenu";
 import GeneralSelection from "./GeneralAlgorithms/GeneralSelection";
+import BinarySearch from "./GeneralAlgorithms/BinarySearch";
 import "./BasicMenus/Startup.css";
 import "./Templates/AnimatedList.css";
-import { useRef, useState } from "react";
+import { useState } from "react";
+
+const validMenus = ["startup", "main menu", "general", "binary search"];
 
 function App() {
   // State to control visibility of Startup
-  const [CurrentMenu, setCurrentMenu] = useState("startup");
+  const [CurrentMenu, setCurrentMenu] = useState<string>("startup");
   // Undo stack state for menus
   const [menuStack, setMenuStack] = useState<string[]>([]);
 
   const changeMenu = (name: string) => {
     name = name.toLowerCase();
+    if (!validMenus.includes(name)) {
+      throw new Error("Invalid menu name");
+    }
 
     // Return to previous menu
     if (name == "back") {
@@ -28,14 +34,17 @@ function App() {
     }
   };
 
+  const menuComponents: Record<string, JSX.Element> = {
+    startup: <Startup changeMenu={changeMenu} />,
+    "main menu": <MainMenu changeMenu={changeMenu} />,
+    general: <GeneralSelection changeMenu={changeMenu} />,
+    "binary search": <BinarySearch changeMenu={changeMenu} />,
+  };
+
   return (
     <>
       <h1>Algorithm Visualizer</h1>
-      {CurrentMenu === "startup" && <Startup changeMenu={changeMenu} />}
-      {CurrentMenu === "main menu" && <MainMenu changeMenu={changeMenu} />}
-      {CurrentMenu === "general" && (
-        <GeneralSelection changeMenu={changeMenu} />
-      )}
+      {menuComponents[CurrentMenu]}
     </>
   );
 }

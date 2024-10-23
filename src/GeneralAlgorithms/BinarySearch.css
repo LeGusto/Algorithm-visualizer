@@ -1,0 +1,72 @@
+.binary_main {
+  opacity: 0;
+  animation: appear 1s forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.binary_search_array {
+  display: flex;
+
+  text-align: center;
+  flex-direction: row;
+  height: 50px;
+
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  margin-left: -250px;
+
+  border: solid;
+  border-radius: 20px;
+  border-color: #ffc436;
+  transition-duration: 0.4s;
+}
+
+.array_element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  height: 50px;
+  width: 50px;
+}
+
+.pointer_arrow {
+  width: 40px;
+  height: 80px;
+  background-image: url("../assets/Arrow.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.pointer_text {
+  color: red;
+  display: flex;
+  height: 40px;
+  width: 100%;
+
+  text-align: center;
+  flex-direction: column;
+}
+
+.pointer {
+  display: inline-flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+
+  text-align: center;
+}
