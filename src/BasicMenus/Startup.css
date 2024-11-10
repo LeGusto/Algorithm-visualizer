@@ -5,7 +5,11 @@
   justify-content: space-between;
 }*/
 
-.main_component {
+:root {
+  font-size: 1rem;
+}
+
+.info {
   display: flex;
 
   text-align: center;
@@ -13,13 +17,8 @@
   justify-content: space-between;
 
   background-color: rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 50%;
-  left: 50%;
   height: 300px;
-  margin-top: -150px;
-  margin-left: -250px;
-  width: 500px;
+  width: min(500px, 80vw);
   padding-bottom: 40px;
 
   border: solid;

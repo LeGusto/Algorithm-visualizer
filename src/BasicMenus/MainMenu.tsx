@@ -1,4 +1,5 @@
 import AnimatedList from "../Templates/AnimatedList";
+import "../Templates/ReusableCSS.css";
 
 interface Props {
   changeMenu: (name: string) => void;
@@ -6,8 +7,15 @@ interface Props {
 
 const MainMenu = (props: Props) => {
   const options = ["General", "Sorting", "Graph"];
+  const names = ["General", "Sorting", "Graph"];
 
-  return <AnimatedList choices={options} changeMenu={props.changeMenu} />;
+  return (
+    <AnimatedList
+      choices={options}
+      names={names}
+      changeMenu={props.changeMenu}
+    />
+  );
 };
 
 export default MainMenu;

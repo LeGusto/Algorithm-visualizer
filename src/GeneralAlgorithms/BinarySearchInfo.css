@@ -1,0 +1,50 @@
+.binary_info_box {
+  display: flex;
+
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  /*align-items: center;*/
+
+  max-width: min(80%, 500px);
+
+  border: solid;
+  border-radius: 20px;
+  border-color: #ffc436;
+  transition-duration: 0.4s;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.binary_button_container {
+  display: flex;
+
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.binary_button {
+  border: solid;
+  border-radius: 20px;
+  border-color: #ffc436;
+  transition-duration: 0.4s;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: aliceblue;
+
+  width: min(200px, 35vw);
+  height: 50px;
+  font-size: 1.2em;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  border-color: #a78024;
+}
+
+p {
+  margin-top: 0;
+}

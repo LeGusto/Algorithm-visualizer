@@ -1,13 +1,17 @@
-import { useEffect, useImperativeHandle, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import "../Templates/ReusableCSS.css";
+import "./AnimatedList.css";
 
 interface Props {
   choices: string[];
+  names: string[];
   changeMenu: (name: string) => void;
 }
 
 const AnimatedList = (props: Props) => {
   // Algorithm choices
   const choices = props.choices;
+  const menuNames = props.names;
 
   // States
   const [HoverIndex, setHoverIndex] = useState(-1);
@@ -76,7 +80,7 @@ const AnimatedList = (props: Props) => {
         );
 
         // Initialize main menu
-        props.changeMenu(choices[index]);
+        props.changeMenu(menuNames[index]);
       };
 
       choiceRefs.current[ind]?.addEventListener(
@@ -114,19 +118,21 @@ const AnimatedList = (props: Props) => {
 
   // Elements
   return (
-    <div className="main_menu">
-      {choices.map((item, index) => (
-        <button
-          key={index}
-          ref={(el) => (choiceRefs.current[index] = el)}
-          className="choice"
-          onMouseEnter={() => handleHover(index)}
-          onMouseLeave={() => handleHover(-1)}
-          onClick={() => handleClick(index)}
-        >
-          {item}
-        </button>
-      ))}
+    <div className="main_component">
+      <div className="choice_container">
+        {choices.map((item, index) => (
+          <button
+            key={index}
+            ref={(el) => (choiceRefs.current[index] = el)}
+            className="choice"
+            onMouseEnter={() => handleHover(index)}
+            onMouseLeave={() => handleHover(-1)}
+            onClick={() => handleClick(index)}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

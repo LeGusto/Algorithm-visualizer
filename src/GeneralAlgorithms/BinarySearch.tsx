@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./BinarySearch.css";
+import "../Templates/ReusableCSS.css";
 
 interface Props {
   changeMenu: (name: string) => void;
@@ -10,11 +11,15 @@ const BinarySearch = (props: Props) => {
   var numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   const searchVal = 2;
 
+  const screenWidth = window.screen.width;
+  while (numArray.length * 50 > screenWidth - 10) numArray.pop();
+
   // States
   const [LeftPointerIndex, setLeftPointerIndex] = useState(0);
   const [RightPointerIndex, setRightPointerIndex] = useState(
     numArray.length - 1
   );
+  const [NextStep, setNextStep] = useState("Middle value");
 
   // Refs
   const arrayRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -51,15 +56,21 @@ const BinarySearch = (props: Props) => {
 
   // Find next pointer boundaries using BS
   const handleNextClick = () => {
-    console.log(`Searching: ${searchVal}`);
-
     const mid =
       LeftPointerIndex + Math.floor((RightPointerIndex - LeftPointerIndex) / 2);
 
     if (mid < 0 || mid >= numArray.length) {
       throw new Error(`Invalid binary search array index: ${mid}`);
     }
-    console.log(numArray[mid]);
+
+    if (NextStep == "Middle value") {
+      setNextStep("Pointers");
+      arrayRefs.current[mid]?.classList.add("middle_value");
+      return;
+    }
+
+    arrayRefs.current[mid]?.classList.remove("middle_value");
+    setNextStep("Middle value");
 
     if (numArray[mid] < searchVal) {
       arrayRefs.current[LeftPointerIndex]?.classList.remove("selected_element");
@@ -80,38 +91,42 @@ const BinarySearch = (props: Props) => {
 
   return (
     <>
-      <div className="binary_main">
-        <div
-          className="binary_search_array"
-          ref={arrayContainerRef}
-          //style={{ marginLeft: (-numArray.length * 25).toString() + "px" }}
-        >
-          {numArray.map((item, index) => (
-            <div
-              key={index}
-              ref={(el) => (arrayRefs.current[index] = el)}
-              className="array_element"
-            >
-              {item}
-            </div>
-          ))}
+      <div className="main_component">
+        <div className="binary_main">
+          <div
+            className="binary_search_array"
+            ref={arrayContainerRef}
+            //style={{ marginLeft: (-numArray.length * 25).toString() + "px" }}
+          >
+            {numArray.map((item, index) => (
+              <div
+                key={index}
+                ref={(el) => (arrayRefs.current[index] = el)}
+                className="array_element"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+
+          <button
+            className="binary_next"
+            ref={nextButtonRef}
+            onClick={() => handleNextClick()}
+          >
+            Next
+          </button>
         </div>
 
-        <button
-          className="binary_next"
-          ref={nextButtonRef}
-          onClick={() => handleNextClick()}
-        ></button>
-      </div>
+        <div className="pointer" ref={leftPointerRef}>
+          <div className="pointer_text">Left</div>
+          <div className="pointer_arrow"></div>
+        </div>
 
-      <div className="pointer" ref={leftPointerRef}>
-        <div className="pointer_text">Left</div>
-        <div className="pointer_arrow"></div>
-      </div>
-
-      <div className="pointer" ref={rightPointerRef}>
-        <div className="pointer_text">Right</div>
-        <div className="pointer_arrow"></div>
+        <div className="pointer" ref={rightPointerRef}>
+          <div className="pointer_text">Right</div>
+          <div className="pointer_arrow"></div>
+        </div>
       </div>
     </>
   );

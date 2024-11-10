@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import "../Templates/ReusableCSS.css";
+import "./Startup.css";
 
 interface Props {
   changeMenu: (name: string) => void;
@@ -54,18 +56,20 @@ const Startup = (props: Props) => {
 
   // Elements
   return (
-    <div className="main_component" ref={box}>
-      <p>Welcome!</p>
+    <div className="main_component">
+      <div className="info" ref={box}>
+        <p>Welcome!</p>
 
-      <button
-        className="start_button"
-        ref={btt}
-        onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}
-        onClick={handleClick}
-      >
-        Start
-      </button>
+        <button
+          className="start_button"
+          ref={btt}
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+          onClick={handleClick}
+        >
+          Start
+        </button>
+      </div>
     </div>
   );
 };

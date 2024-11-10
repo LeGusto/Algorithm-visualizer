@@ -1,9 +1,8 @@
 import Startup from "./BasicMenus/Startup";
 import MainMenu from "./BasicMenus/MainMenu";
 import GeneralSelection from "./GeneralAlgorithms/GeneralSelection";
+import BinarySearchInfo from "./GeneralAlgorithms/BinarySearchInfo";
 import BinarySearch from "./GeneralAlgorithms/BinarySearch";
-import "./BasicMenus/Startup.css";
-import "./Templates/AnimatedList.css";
 import { useState } from "react";
 import SortingSelection from "./Sorting.tsx/SortingSelection";
 import GraphSelection from "./Graph/GraphSelection";
@@ -15,6 +14,7 @@ const validMenus = [
   "sorting",
   "graph",
   "binary search",
+  "binary search info",
   "back",
 ];
 
@@ -49,6 +49,7 @@ function App() {
     startup: <Startup changeMenu={changeMenu} />,
     "main menu": <MainMenu changeMenu={changeMenu} />,
     general: <GeneralSelection changeMenu={changeMenu} />,
+    "binary search info": <BinarySearchInfo changeMenu={changeMenu} />,
     "binary search": <BinarySearch changeMenu={changeMenu} />,
     graph: <GraphSelection changeMenu={changeMenu} />,
     sorting: <SortingSelection changeMenu={changeMenu} />,

@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import AnimatedList from "../Templates/AnimatedList";
 
 interface Props {
@@ -7,8 +6,15 @@ interface Props {
 
 const SortingSelection = (props: Props) => {
   const options = ["Back"];
+  const names = ["Back"];
 
-  return <AnimatedList choices={options} changeMenu={props.changeMenu} />;
+  return (
+    <AnimatedList
+      choices={options}
+      names={names}
+      changeMenu={props.changeMenu}
+    />
+  );
 };
 
 export default SortingSelection;
