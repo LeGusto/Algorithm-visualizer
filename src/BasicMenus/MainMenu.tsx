@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import AnimatedList from "../Templates/AnimatedList";
 
 interface Props {
