@@ -5,8 +5,18 @@ import BinarySearch from "./GeneralAlgorithms/BinarySearch";
 import "./BasicMenus/Startup.css";
 import "./Templates/AnimatedList.css";
 import { useState } from "react";
+import SortingSelection from "./Sorting.tsx/SortingSelection";
+import GraphSelection from "./Graph/GraphSelection";
 
-const validMenus = ["startup", "main menu", "general", "binary search"];
+const validMenus = [
+  "startup",
+  "main menu",
+  "general",
+  "sorting",
+  "graph",
+  "binary search",
+  "back",
+];
 
 function App() {
   // State to control visibility of Startup
@@ -17,6 +27,7 @@ function App() {
   const changeMenu = (name: string) => {
     name = name.toLowerCase();
     if (!validMenus.includes(name)) {
+      console.log(name);
       throw new Error("Invalid menu name");
     }
 
@@ -39,6 +50,8 @@ function App() {
     "main menu": <MainMenu changeMenu={changeMenu} />,
     general: <GeneralSelection changeMenu={changeMenu} />,
     "binary search": <BinarySearch changeMenu={changeMenu} />,
+    graph: <GraphSelection changeMenu={changeMenu} />,
+    sorting: <SortingSelection changeMenu={changeMenu} />,
   };
 
   return (

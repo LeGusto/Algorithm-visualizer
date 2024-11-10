@@ -5,10 +5,10 @@ interface Props {
   changeMenu: (name: string) => void;
 }
 
-const GeneralSelection = (props: Props) => {
-  const options = ["Binary search", "Back"];
+const SortingSelection = (props: Props) => {
+  const options = ["Back"];
 
   return <AnimatedList choices={options} changeMenu={props.changeMenu} />;
 };
 
-export default GeneralSelection;
+export default SortingSelection;

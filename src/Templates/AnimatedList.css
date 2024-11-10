@@ -21,6 +21,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  align-items: center;
 
   color: rgb(240, 248, 255, 0);
   -webkit-text-stroke: 0;
