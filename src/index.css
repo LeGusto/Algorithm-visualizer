@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url(../public/Shiny\ Overlay.svg);
+  background-image: url("./assets/BG.svg");
 }
 
 h1 {
