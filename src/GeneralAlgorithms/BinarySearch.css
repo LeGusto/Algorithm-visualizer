@@ -66,6 +66,8 @@
   align-items: center;
   width: 100px;
 
+  position: absolute;
+
   text-align: center;
   transition-duration: 0.4s;
 }

@@ -20,6 +20,7 @@ const BinarySearch = (_props: Props) => {
     numArray.length - 1
   );
   const [NextStep, setNextStep] = useState("Middle value");
+  const [CurrentPhase, setCurrentPhase] = useState("Start");
 
   // Refs
   const arrayRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -28,31 +29,29 @@ const BinarySearch = (_props: Props) => {
   const rightPointerRef = useRef<HTMLDivElement | null>(null);
   const nextButtonRef = useRef<HTMLButtonElement | null>(null);
 
-  const fixPointer = useCallback(
-    (pointer: HTMLDivElement | null, item: HTMLDivElement | null) => {
-      if (pointer) {
-        pointer.style.position = "absolute";
-        if (item) {
-          // Get absolute position of first element in array
-          var rect = item.getBoundingClientRect();
+  const fixPointer = (
+    pointer: HTMLDivElement | null,
+    item: HTMLDivElement | null
+  ) => {
+    //useCallback
 
-          pointer.style.top = `${
-            rect.top + window.scrollY - pointer.offsetHeight - 10
-          }px`;
+    if (pointer) {
+      if (item) {
+        // Get absolute position of first element in array
+        var rect = item.getBoundingClientRect();
 
-          pointer.style.left = `${
-            rect.left +
-            window.scrollX +
-            rect.width / 2 -
-            pointer.offsetWidth / 2
-          }px`;
+        pointer.style.top = `${
+          rect.top + window.scrollY - pointer.offsetHeight - 10
+        }px`;
 
-          item.classList.add("selected_element");
-        }
+        pointer.style.left = `${
+          rect.left + window.scrollX + rect.width / 2 - pointer.offsetWidth / 2
+        }px`;
+
+        item.classList.add("selected_element");
       }
-    },
-    []
-  );
+    }
+  };
 
   // Find next pointer boundaries using BS
   const handleNextClick = () => {
@@ -85,8 +84,8 @@ const BinarySearch = (_props: Props) => {
 
   // Update pointers after index change
   useEffect(() => {
-    fixPointer(leftPointerRef.current, arrayRefs.current[LeftPointerIndex]);
     fixPointer(rightPointerRef.current, arrayRefs.current[RightPointerIndex]);
+    fixPointer(leftPointerRef.current, arrayRefs.current[LeftPointerIndex]);
   }, [LeftPointerIndex, RightPointerIndex]);
 
   return (
@@ -119,12 +118,12 @@ const BinarySearch = (_props: Props) => {
         </div>
 
         <div className="pointer" ref={leftPointerRef}>
-          <div className="pointer_text">Left</div>
+          <div className="pointer_text"></div>
           <div className="pointer_arrow"></div>
         </div>
 
         <div className="pointer" ref={rightPointerRef}>
-          <div className="pointer_text">Right</div>
+          <div className="pointer_text"></div>
           <div className="pointer_arrow"></div>
         </div>
       </div>

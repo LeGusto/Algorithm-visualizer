@@ -43,7 +43,7 @@ const BinarySearchInfo = (props: Props) => {
           half. The intuition behind the algorithm is that if we always check
           the middle value of a range, we have only three possible options:
         </p>
-        <ol>
+        <ol style={{ textAlign: "left" }}>
           <li>We found the value we are searching for </li>
           <li>
             The value we are searching for is less than middle value, so we can
