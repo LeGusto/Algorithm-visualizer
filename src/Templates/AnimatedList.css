@@ -31,13 +31,13 @@
 
 .expansion {
   width: 0;
-  animation: expand 0.7s forwards;
+  animation: expand 1s forwards;
   animation-timing-function: ease-in-out;
 }
 
 .reduction {
   width: 100%;
-  animation: shrink 0.7s forwards;
+  animation: shrink 1s forwards;
   animation-timing-function: ease-in-out;
 }
 
