@@ -9,6 +9,18 @@
   gap: 20px;
 }
 
+.button_container {
+  display: flex;
+  width: 100%;
+
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  gap: 20px;
+}
+
 .binary_search_array {
   display: flex;
 
